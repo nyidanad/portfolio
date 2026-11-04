@@ -1,69 +1,67 @@
 import Image from "next/image";
 
+import { Terminal } from "@/components/ui/Terminal";
+import { Statistic } from "@/components/ui/Statistic";
+import { LuCalendarDays, LuCodeXml, LuFolderGit2, LuLayers } from "react-icons/lu";
+
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className=" justify-center items-center flex flex-col mt-10">
+      <div className="flex flex-row justify-between items-center">
+        <div className="max-w-1/2">
+          <p className="text-zinc-100 text-sm mb-5">
+            <span className="text-[#4ade80]">$ </span> 
+            whoami
           </p>
+          <h1 className="text-zinc-100 text-7xl font-bold mb-5">
+            Hi, I'm 
+            <span className="text-[#4ade80]"> Dániel Nyíri</span>
+          </h1>
+          <p className="text-violet-300 text-2xl mb-5">Software Developer</p>
+          <p className="text-zinc-500 text-sm mb-5">
+            I build modern web and mobile applications, backends and CI/CD pipelines.<br />
+            Clean code and great user experience are my goals.</p>
+          <ul className="flex flex-row gap-3 text-sm text-zinc-500 mb-9">
+            <li className="bg-[##3a3d43] border border-[##3a3d43] rounded-full text-zinc-500 text-[12px] px-2.5 py-0.5">Next.js</li>
+            <li className="bg-[##3a3d43] border border-[##3a3d43] rounded-full text-zinc-500 text-[12px] px-2.5 py-0.5">TypeScript</li>
+            <li className="bg-[##3a3d43] border border-[##3a3d43] rounded-full text-zinc-500 text-[12px] px-2.5 py-0.5">Java</li>
+            <li className="bg-[##3a3d43] border border-[##3a3d43] rounded-full text-zinc-500 text-[12px] px-2.5 py-0.5">Python</li>
+            <li className="bg-[##3a3d43] border border-[##3a3d43] rounded-full text-zinc-500 text-[12px] px-2.5 py-0.5">PostgreSQL</li>
+            <li className="bg-[##3a3d43] border border-[#4ade80] rounded-full text-[#4ade80] text-[12px] px-2.5 py-0.5 hover:border-emerald-200 hover:text-emerald-200"><a href="/about">More...</a></li>
+          </ul>
+
+          <div className="flex flex-row gap-3">
+            <a href="/projects" className="bg-[#4ade80] text-zinc-900 text-sm px-4 py-3 hover:text-emerald-50">./projects</a>
+            <a href="/contact" className="border border-[#4ade80] text-[#4ade80] text-sm px-4 py-3 hover:bg-[#4ade80] hover:text-emerald-50">./contact</a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+
+        <div className="relative w-100 aspect-4/5">
+          {/* Backdrop */}
+          <div className="absolute top-4 left-5 w-full h-full border-2 border-[#4ade80] rounded-3xl" />
+
+          {/* Image */}
+          <div className="relative w-full h-full overflow-hidden rounded-3xl">
             <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+              src="/images/CV-profile-2026.jpg"
+              alt="Hero Image"
+              fill
+              priority
+              className="object-cover"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
+
+          {/* Terminal */}
+          <Terminal />
         </div>
-      </main>
+      </div>
+
+      <div className="flex flex-row gap-3 mt-10">
+        <Statistic icon={<LuFolderGit2 />} title="Projects" value="5+" />
+        <Statistic icon={<LuCodeXml />} title="Technologies" value="10+" />
+        <Statistic icon={<LuCalendarDays />} title="Experience Level" value="Entry-level" />
+        <Statistic icon={<LuLayers />} title="Specialization" value="Full Stack, DevOps" />
+      </div>
     </div>
   );
 }
