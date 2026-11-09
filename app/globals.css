@@ -1,25 +1,93 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #1a1b1e;
-  --card: #222327;
-  --bar: #2b2d31;
-  --line: #3a3d43;
-  --txt: #e2e4e8;
-  --dim: #9a9ea7;
-  --grn: #4ade80;
-  --amb: #b69cff;
-  --ink: #07140d;
+  color-scheme: dark;
+  --bg: #07101f;
+  --panel: #0d1a30;
+  --line: #1e3a5f;
+  --grid: rgba(77, 227, 255, 0.07);
+  --cyan: #4de3ff;
+  --mint: #7cffb2;
+  --amber: #ffb547;
+  --vio: #b48cff;
+  --red: #ff6b63;
+  --text: #dce8f8;
+  --mute: #7f93b2;
+  --sans: var(--font-sans), system-ui, sans-serif;
+  --mono: var(--font-mono), ui-monospace, monospace;
+  --bg-image: url("/images/background-dark.png");
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
-
-body {
-  background-color: var(--bg);
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #eef3fa;
+  --panel: #ffffff;
+  --line: #b7c6dd;
+  --grid: rgba(10, 90, 200, 0.08);
+  --cyan: #0a6cff;
+  --mint: #00875a;
+  --amber: #c26a00;
+  --vio: #7a4dff;
+  --red: #d6362e;
+  --text: #0b1b3a;
+  --mute: #52668a;
+  --bg-image: url("/images/background-light.png");
 }
 
-.blinking::after {
-  content: "▍";
-  animation: bl 1s steps(1) infinite;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 60px;
+}
+
+body {
+  background: var(--bg-image) top left / auto no-repeat fixed, var(--bg);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--mint);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--mint) 50%, transparent);
+  animation: pu 2s infinite;
+}
+
+@keyframes pu {
+  0% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--mint) 50%, transparent);
+  }
+
+  70% {
+    opacity: 0.9;
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--mint) 0%, transparent);
+  }
+
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--mint) 0%, transparent);
+  }
+}
+
+.spot {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: radial-gradient(
+    circle 240px at var(--mx, 50%) var(--my, 50%),
+    rgba(190, 225, 255, 0.08),
+    transparent 70%
+  );
+}
+:root[data-theme="light"] .spot {
+  background: radial-gradient(
+    circle 240px at var(--mx, 50%) var(--my, 50%),
+    rgb(147, 205, 255, 0.35),
+    transparent 70%
+  );
 }

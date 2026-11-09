@@ -1,47 +1,73 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { navLinks } from "@/config/nav";
+import Link from "next/link";
 
-function isActive(pathname: string, href: string) {
-  if (href === "/") return pathname === "/";
-  return pathname === href || pathname.startsWith(`${href}/`);
-}
+import Searchbar from "../ui/Searchbar";
+import ThemeButton from "../ui/ThemeButton";
+
+const ids = navLinks.map((l) => l.href.slice(1));
 
 export default function Navbar() {
-  const pathname = usePathname();
-  const crumb = pathname === '/' ? '~' : '~' + pathname;
+  const [active, setActive] = useState(ids[0]);
+
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <header className="border-b border-zinc-700">
-      <nav className="flex justify-between items-center px-16 h-14">
-        <Link href="/" className="navbar-logo">
-          <p className="text-[#4ade80] text-sm font-bold">
-            daniel@portfolio:
-            <span className="text-violet-300">{crumb}</span>
-            $
-          </p>
-        </Link>
+    <header className="sticky top-0 z-10 border-r border-(--line)">
+      <nav className="flex h-14 items-center bg-(--bg) border-b border-(--line) px-5">
+        {/* Title */}
+        <div className="basis-1/3 shrink-0 flex flex-row items-center gap-2">
+          <span className="dot" />
+          <p className="text-sm font-bold font-mono">nyiri.dev</p>
+        </div>
 
-        <ul className="flex gap-0.5">
+        {/* Routes */}
+        <ul className="flex basis-1/3 shrink-0 flex-row justify-center gap-0.5">
           {navLinks.map(({ label, href }) => {
-            const active = isActive(pathname, href);
+            const isActive = active === href.slice(1);
+
             return (
-              <li
-                key={href}
-                className={`text-sm px-2.5 py-1.5  ${active ? "bg-emerald-600/25 text-[#4ade80]" : "text-zinc-500 hover:text-zinc-100"}`}
-              >
+              <li key={href}>
                 <Link
                   href={href}
-                  aria-current={active ? "page" : undefined}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`flex items-center gap-3 border px-3.5 py-1.5 text-sm font-mono transition-colors duration-200 ${
+                    isActive
+                      ? "border-(--line) bg-(--panel) border-b-2 border-b-(--cyan) text-(--cyan) rounded-md shadow-sm *:shadow-(--cyan)"
+                      : "border-transparent text-(--mute) hover:text-(--txt)"
+                  }`}
                 >
-                  {label}
+                  <span className={`${isActive ? "text-(--txt)" : ""}`}>{label}</span>
                 </Link>
               </li>
             );
           })}
         </ul>
+
+        {/* Action buttons */}
+        <div className="flex flex-row basis-1/3 shrink-0 justify-end items-center gap-2">
+          <Searchbar />
+          <ThemeButton />
+        </div>
+
       </nav>
     </header>
   );
