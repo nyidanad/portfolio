@@ -56,18 +56,24 @@ body {
 
 @keyframes pu {
   0% {
-    opacity: 1;
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--mint) 50%, transparent);
+    transform: scale(1);
+    box-shadow:
+      0 0 0 0 color-mix(in srgb, var(--mint) 70%, transparent),
+      0 0 8px var(--mint);
   }
 
   70% {
-    opacity: 0.9;
-    box-shadow: 0 0 0 6px color-mix(in srgb, var(--mint) 0%, transparent);
+    transform: scale(1.05);
+    box-shadow:
+      0 0 0 8px color-mix(in srgb, var(--mint) 0%, transparent),
+      0 0 8px var(--mint);
   }
 
   100% {
-    opacity: 1;
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--mint) 0%, transparent);
+    transform: scale(1);
+    box-shadow:
+      0 0 0 0 color-mix(in srgb, var(--mint) 0%, transparent),
+      0 0 8px var(--mint);
   }
 }
 

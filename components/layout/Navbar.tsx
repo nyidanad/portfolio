@@ -31,12 +31,12 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-10 border-r border-(--line)">
-      <nav className="flex h-14 items-center bg-(--bg) border-b border-(--line) px-5">
+    <header className="fixed inset-x-0 top-0 z-10">
+      <nav className="flex h-14 w-full items-center bg-(--bg) border-b border-(--line) px-5">
         {/* Title */}
-        <div className="basis-1/3 shrink-0 flex flex-row items-center gap-2">
+        <div className="basis-1/3 shrink-0 flex flex-row items-center gap-2.5">
           <span className="dot" />
-          <p className="text-sm font-bold font-mono">nyiri.dev</p>
+          <p className="text-sm text-(--mint) font-bold font-mono">Active job seeker</p>
         </div>
 
         {/* Routes */}
@@ -51,11 +51,11 @@ export default function Navbar() {
                   aria-current={isActive ? "page" : undefined}
                   className={`flex items-center gap-3 border px-3.5 py-1.5 text-sm font-mono transition-colors duration-200 ${
                     isActive
-                      ? "border-(--line) bg-(--panel) border-b-2 border-b-(--cyan) text-(--cyan) rounded-md shadow-sm *:shadow-(--cyan)"
-                      : "border-transparent text-(--mute) hover:text-(--txt)"
+                      ? "border-(--line) bg-(--panel) border-b-2 border-b-(--cyan) text-(--cyan) rounded-md shadow-sm"
+                      : "border-transparent text-(--mute) hover:text-(--text)"
                   }`}
                 >
-                  <span className={`${isActive ? "text-(--txt)" : ""}`}>{label}</span>
+                  <span className={isActive ? "text-(--text)" : ""}>{label}</span>
                 </Link>
               </li>
             );
@@ -67,7 +67,6 @@ export default function Navbar() {
           <Searchbar />
           <ThemeButton />
         </div>
-
       </nav>
     </header>
   );
