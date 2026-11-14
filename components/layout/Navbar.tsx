@@ -55,7 +55,7 @@ export default function Navbar() {
                       : "border-transparent text-(--mute) hover:text-(--text)"
                   }`}
                 >
-                  <span className={isActive ? "text-(--text)" : ""}>{label}</span>
+                  <span className={isActive ? "text-(--cyan)" : ""}>{label}</span>
                 </Link>
               </li>
             );
