@@ -6,7 +6,7 @@ const cols = "grid-cols-[minmax(0,5fr)_repeat(4,minmax(0,1.25fr))]";
 
 export default function Docs() {
   return (
-    <section id="docs" className="min-h-screen mt-32">
+    <section id="docs" className="min-h-[80vh] mt-32">
       <div className="max-w-6xl m-auto">
         <h2 className="text-7xl font-bold mb-10">
           <span className="text-(--cyan)">&gt; </span>
