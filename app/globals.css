@@ -23,14 +23,14 @@
 :root[data-theme="light"] {
   color-scheme: light;
   --bg: #eef3fa;
-  --panel: #ffffff;
-  --line: #b7c6dd;
+  --panel: #fcfdff;
+  --line: #bfcee4;
   --grid: rgba(10, 90, 200, 0.08);
   --cyan: #0a6cff;
-  --mint: #00875a;
-  --amber: #c26a00;
-  --vio: #7a4dff;
-  --red: #d6362e;
+  --mint: #10a36e;
+  --amber: #e8840a;
+  --vio: #8b5cf6;
+  --red: #e5393b;
   --text: #0b1b3a;
   --mute: #52668a;
   --bg-image: url("/images/background-light.png");
