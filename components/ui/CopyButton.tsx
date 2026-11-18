@@ -22,7 +22,7 @@ export default function CopyButton({text, label, className}: CopyButtonProps) {
   };
 
   return (
-    <button type="button" onClick={copy} className={className}>
+    <button type="button" onClick={copy} className={`max-w-full break-all ${className ?? ""}`}>
       {state === "copied" ? "Copied" : state === "failed" ? text : label}
     </button>
   );
