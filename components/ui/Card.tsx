@@ -13,7 +13,7 @@ const colorStyles: Record<string, string> = {
 
 export default function Card({ name, type, description, color, technologies, docUrl, repo, active }: Project) {
   return (
-    <div className="flex min-h-97.5 flex-col rounded-xl border border-(--line) bg-(--panel) transition-all duration-200 ease-out hover:border-(--cyan) hover:border-b-4 hover:shadow-[0_12px_30px_-12px_color-mix(in_srgb,var(--cyan)_40%,transparent)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+    <div className="flex w-full max-w-[320px] flex-col rounded-xl border border-(--line) bg-(--panel) transition-all duration-200 ease-out hover:border-(--cyan) hover:border-b-4 hover:shadow-[0_12px_30px_-12px_color-mix(in_srgb,var(--cyan)_40%,transparent)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-h-97.5 md:max-w-none">
       <div className="flex flex-row gap-1.5 border-b border-(--line) px-4 py-3">
         <span className="h-2 w-2 rounded-full bg-(--line)" />
         <span className="h-2 w-2 rounded-full bg-(--line)" />
@@ -22,21 +22,20 @@ export default function Card({ name, type, description, color, technologies, doc
 
       {/* <Image /> */}
       <div className="relative">
-        <div className="h-40 w-full bg-(--bg)" />
+        <div className="h-36 w-full bg-(--bg) sm:h-40" />
         {active && (
-          <div className="flex flex-row gap-2 items-center absolute top-3 right-3">
-            <p className="text-[12px] text-(--mint) bg-(--mint)/20 px-2 py-1 font-mono">Active</p>
+          <div className="absolute top-3 right-3 flex flex-row items-center gap-2">
+            <p className="bg-(--mint)/20 px-2 py-1 font-mono text-[12px] text-(--mint)">Active</p>
           </div>
-         )
-        }
+        )}
       </div>
 
       <div className="flex flex-1 flex-col p-4">
-        <span className={`self-start rounded-full border px-3 py-1 font-mono text-[12px] ${colorStyles[color]}`}>
+        <span className={`self-start rounded-full border px-3 py-1 font-mono text-[clamp(9px,2.6vw,10px)] lg:text-[11px] xl:text-xs ${colorStyles[color]}`}>
           {type}
         </span>
-        <h3 className="mt-3 mb-0.5 text-2xl font-bold">{name}</h3>
-        <p className="mb-4 leading-tight text-(--mute)">{description}</p>
+        <h3 className="mt-3 mb-0.5 text-xl font-bold sm:text-2xl">{name}</h3>
+        <p className="mb-4 text-[clamp(13px,3.4vw,15px)] leading-tight text-(--mute) xl:text-base">{description}</p>
         <div className="mt-auto flex flex-wrap items-center gap-x-1.5 gap-y-1">
           {technologies.map((technology, i) => (
             <Fragment key={technology}>
@@ -50,11 +49,11 @@ export default function Card({ name, type, description, color, technologies, doc
       </div>
 
       {/* Footer */}
-      <div className="flex flex-row justify-between border-t border-(--line) px-4 py-3 cursor-pointer">
+      <div className="flex flex-row flex-wrap items-center justify-between gap-x-4 border-t border-(--line) px-4 py-1.5">
         <a
           // href={docUrl}
           download
-          className="group flex flex-row items-center gap-1 text-(--mute) transition-colors hover:text-(--cyan)"
+          className="flex flex-row items-center gap-1.5 py-1.5 text-(--mute) transition-colors hover:text-(--cyan)"
         >
           <span className="font-mono text-[12px]">Documentation</span>
           <IoMdDownload />
@@ -63,7 +62,7 @@ export default function Card({ name, type, description, color, technologies, doc
           href={repo}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex flex-row items-center gap-1 text-(--mute) transition-colors hover:text-(--cyan)"
+          className="flex flex-row items-center gap-1.5 py-1.5 text-(--mute) transition-colors hover:text-(--cyan)"
         >
           <span className="font-mono text-[12px]">GitHub</span>
           <LuFolderGit2 />
