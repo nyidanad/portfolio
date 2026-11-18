@@ -53,7 +53,7 @@ export default function Card({ name, type, description, color, technologies, doc
         <a
           // href={docUrl}
           download
-          className="flex flex-row items-center gap-1.5 py-1.5 text-(--mute) transition-colors hover:text-(--cyan)"
+          className="cursor-pointer flex flex-row items-center gap-1.5 py-1.5 text-(--mute) transition-colors hover:text-(--cyan)"
         >
           <span className="font-mono text-[12px]">Documentation</span>
           <IoMdDownload />
@@ -62,7 +62,7 @@ export default function Card({ name, type, description, color, technologies, doc
           href={repo}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex flex-row items-center gap-1.5 py-1.5 text-(--mute) transition-colors hover:text-(--cyan)"
+          className="cursor-pointer flex flex-row items-center gap-1.5 py-1.5 text-(--mute) transition-colors hover:text-(--cyan)"
         >
           <span className="font-mono text-[12px]">GitHub</span>
           <LuFolderGit2 />
