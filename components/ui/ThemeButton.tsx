@@ -23,7 +23,12 @@ export default function ThemeToggle() {
   };
 
   return (
-    <button className="bg-(--panel) border border-(--line) rounded-md min-w-9 min-h-9 hover:border-(--cyan) hover:text-(--cyan)" type="button" onClick={toggle}>
+    <button 
+      className="bg-(--panel) border border-(--line) rounded-md min-w-9 min-h-9 hover:border-(--cyan) hover:text-(--cyan)
+        lg:mr-3 xl:mr-0" 
+      type="button" 
+      onClick={toggle}
+    >
       {theme === "dark" ? (
         <LuMoon size={18} className="m-auto" />
       ) : (

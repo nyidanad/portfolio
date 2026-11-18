@@ -98,11 +98,11 @@ export default function QuickSearch() {
         onClick={openPalette}
         aria-haspopup="dialog"
         aria-expanded={open}
-        className="flex items-center gap-2.5 rounded-lg border border-(--line) bg-(--panel) px-3 py-1.5 min-w-9 min-h-9 text-sm text-(--text) transition-colors hover:border-(--cyan) hover:text-(--cyan)"
+        className="flex items-center gap-2.5 md:max-xl:gap-1.5 rounded-lg border border-(--line) bg-(--panel) px-3 md:max-xl:px-2 py-1.5 min-w-9 min-h-9 text-sm text-(--text) transition-colors hover:border-(--cyan) hover:text-(--cyan)"
       >
         <FaMagnifyingGlass size={14} />
-        <span className="hidden sm:inline font-mono">Quick search</span>
-        <kbd className="rounded border border-(--line) px-1.5 text-[11px] text-(--mute)">
+        <span className="hidden md:inline font-mono md:max-xl:text-xs">Quick search</span>
+        <kbd className="hidden lg:inline rounded border border-(--line) px-1.5 text-[11px] md:max-xl:text-[10px] text-(--mute)">
           {modKey} K
         </kbd>
       </button>
