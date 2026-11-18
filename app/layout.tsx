@@ -20,7 +20,7 @@ const mono = JetBrains_Mono({
 });
  
 export const metadata: Metadata = {
-  title: "Portfolio",
+  title: "Nyíri Dániel • Portfolio",
   description: "Made by Nyíri Dániel",
 };
 
