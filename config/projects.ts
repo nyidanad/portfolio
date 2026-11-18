@@ -8,6 +8,7 @@ export interface Project {
   color: string;
   description: string;
   technologies: string[];
+  image: string | undefined;
   docUrl: string | undefined;
   repo: string | undefined;
   active: boolean;
@@ -15,59 +16,15 @@ export interface Project {
 
 export const projects: Project[] = [
   { 
-    key: "webshop-admin", 
-    name: "Webshop admin", 
-    type: "Web", 
-    color: "cyan",
-    description: "Admin dashboard for order management.",
-    technologies: ["Next.js", "TypeScript"],
-    docUrl: undefined,
-    repo: undefined,
-    active: true
-  },
-  { 
-    key: "fittrack", 
-    name: "FitTrack",
+    key: "listify", 
+    name: "Listify", 
     type: "Mobile", 
     color: "mint",
-    description: "Workout Log and Progress Tracker Mobile App.",
-    technologies: ["React Native", "Expo", "TypeScript"],
-    docUrl: undefined,
-    repo: undefined,
-    active: false
-
-  },
-  { 
-    key: "payments-api", 
-    name: "Payments API", 
-    type: "Backend",
-    color: "amber",
-    description: "REST API for online payment management.",
-    technologies: ["Spring Boot", "Java"],
-    docUrl: undefined,
-    repo: undefined,
-    active: false
-  },
-  { 
-    key: "cicd-sablonok", 
-    name: "CI/CD templates", 
-    type: "DevOps",
-    color: "vio",
-    description: "Reusable build- and deploy pipeline templates.",
-    technologies: ["GitHub Actions", "Docker"],
-    docUrl: undefined,
-    repo: undefined,
-    active: false
-  },
-  { 
-    key: "note-sync-app", 
-    name: "Note sync app", 
-    type: "Mobile",
-    color: "mint",
-    description: "Offline-first note taking app with syncronization.",
-    technologies: ["React Native", "SQLite"],
-    docUrl: undefined,
-    repo: undefined,
+    description: "Shopping list and finance tracker app with AI assistant.",
+    technologies: ["Expo", "TypeScript", "Supabase", "Llamma3"],
+    image: "/images/screenshots/listify-screenshot.webp",
+    docUrl: "/docs/NyiriDaniel-MSc-thesis.pdf",
+    repo: "https://github.com/nyidanad/Listify",
     active: false
   },
   { 
@@ -77,8 +34,9 @@ export const projects: Project[] = [
     color: "red",
     description: "1:1 CAD-CAM model of a 4 jaw lathe chuck.",
     technologies: ["Autodesk 3D"],
-    docUrl: undefined,
-    repo: undefined,
+    image: "/images/screenshots/lathe_chuck-screenshot.webp",
+    docUrl: "/docs/NyiriDaniel-CADCAM-thesis.pdf",
+    repo: "https://github.com/nyidanad/Four_jaw-Lathe-Chuck",
     active: false
   }
 ];

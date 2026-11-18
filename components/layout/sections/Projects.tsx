@@ -59,6 +59,7 @@ export default function Projects() {
                 color={p.color}
                 description={p.description}
                 technologies={p.technologies}
+                image={p.image}
                 docUrl={p.docUrl}
                 repo={p.repo}
                 active={p.active}
