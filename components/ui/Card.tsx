@@ -18,7 +18,7 @@ export default function Card({ name, type, description, color, technologies, ima
       <div className="card__screenshot">
         {image && (
           <Image
-            src={image}
+            src={"/portfolio"+image}
             alt={`${name} screenshot`}
             fill
             sizes="(min-width: 768px) 33vw, 320px"
@@ -51,7 +51,7 @@ export default function Card({ name, type, description, color, technologies, ima
 
       {/* Footer */}
       <div className="card__footer">
-        <a href={docUrl} download className="card__link">
+        <a href={"/portfolio"+docUrl} download className="card__link">
           <span className="card__link-text">Documentation</span>
           <IoMdDownload />
         </a>

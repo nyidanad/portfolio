@@ -33,7 +33,7 @@ export default function Hero() {
           <div className="hero__photo">
             <Image
               alt="profile"
-              src="/images/CV-profile-2026.jpg"
+              src="/portfolio/images/CV-profile-2026.jpg"
               width={1000}
               height={1000}
               sizes="320px"

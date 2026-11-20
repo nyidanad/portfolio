@@ -19,7 +19,7 @@ img { max-width: 100%; }
   --mute: #7f93b2;
   --sans: var(--font-sans), system-ui, sans-serif;
   --mono: var(--font-mono), ui-monospace, monospace;
-  --bg-image: url("/images/background-dark.png");
+  --bg-image: url("/portfolio/images/background-dark.png");
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -37,7 +37,7 @@ img { max-width: 100%; }
   --red: #e5393b;
   --text: #0b1b3a;
   --mute: #52668a;
-  --bg-image: url("/images/background-light.png");
+  --bg-image: url("/portfolio/images/background-light.png");
 }
 
 html {

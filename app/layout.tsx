@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Chakra_Petch, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-import Footer from "@/components/layout/Footer";
-import Navbar from "@/components/layout/Navbar";
-
 const sans = Chakra_Petch({
   weight: ["400", "500", "700"],
   subsets: ["latin", "latin-ext"],
