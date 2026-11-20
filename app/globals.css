@@ -47,6 +47,7 @@ html {
 
 body {
   background: var(--bg-image) top left / auto no-repeat fixed, var(--bg);
+  font-family: var(--sans);
 }
 
 .dot {
