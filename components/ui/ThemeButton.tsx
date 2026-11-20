@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { LuMoon, LuSun } from "react-icons/lu";
+import "./ThemeButton.component.css";
 
 type Theme = "dark" | "light";
 
@@ -23,16 +24,11 @@ export default function ThemeToggle() {
   };
 
   return (
-    <button 
-      className="bg-(--panel) border border-(--line) rounded-md min-w-9 min-h-9 hover:border-(--cyan) hover:text-(--cyan)
-        lg:mr-3 xl:mr-0" 
-      type="button" 
-      onClick={toggle}
-    >
+    <button className="theme-toggle" type="button" onClick={toggle}>
       {theme === "dark" ? (
-        <LuMoon size={18} className="m-auto" />
+        <LuMoon size={18} className="theme-toggle__icon" />
       ) : (
-        <LuSun size={18} className="m-auto" />
+        <LuSun size={18} className="theme-toggle__icon" />
       )}
     </button>
   );

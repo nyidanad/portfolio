@@ -3,78 +3,60 @@ import { Project } from "@/config/projects";
 import { IoMdDownload } from "react-icons/io";
 import { LuFolderGit2 } from "react-icons/lu";
 import Image from "next/image";
-
-const colorStyles: Record<string, string> = {
-  cyan: "border-(--cyan) text-(--cyan)",
-  mint: "border-(--mint) text-(--mint)",
-  amber: "border-(--amber) text-(--amber)",
-  vio: "border-(--vio) text-(--vio)",
-  red: "border-(--red) text-(--red)",
-};
+import "./Card.component.css";
 
 export default function Card({ name, type, description, color, technologies, image, docUrl, repo, active }: Project) {
   return (
-    <div className="flex w-full max-w-[320px] flex-col rounded-xl border border-(--line) bg-(--panel) transition-all duration-200 ease-out hover:border-(--cyan) hover:border-b-4 hover:shadow-[0_12px_30px_-12px_color-mix(in_srgb,var(--cyan)_40%,transparent)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-h-97.5 md:max-w-none">
-      <div className="flex flex-row gap-1.5 border-b border-(--line) px-4 py-3">
-        <span className="h-2 w-2 rounded-full bg-(--line)" />
-        <span className="h-2 w-2 rounded-full bg-(--line)" />
-        <span className="h-2 w-2 rounded-full bg-(--line)" />
+    <div className="card">
+      <div className="card__header">
+        <span className="card__dot" />
+        <span className="card__dot" />
+        <span className="card__dot" />
       </div>
 
       {/* Screenshot */}
-      <div className="relative h-36 w-full overflow-hidden bg-(--bg) sm:h-40">
+      <div className="card__screenshot">
         {image && (
           <Image
             src={image}
             alt={`${name} screenshot`}
             fill
             sizes="(min-width: 768px) 33vw, 320px"
-            className="object-cover object-center"
+            className="card__image"
           />
         )}
 
         {active && (
-          <div className="absolute top-3 right-3 flex flex-row items-center gap-2">
-            <p className="bg-(--mint)/20 px-2 py-1 font-mono text-[12px] text-(--mint)">Active</p>
+          <div className="card__active-wrap">
+            <p className="card__active">Active</p>
           </div>
         )}
       </div>
 
-      <div className="flex flex-1 flex-col p-4">
-        <span className={`self-start rounded-full border px-3 py-1 font-mono text-[clamp(9px,2.6vw,10px)] lg:text-[11px] xl:text-xs ${colorStyles[color]}`}>
-          {type}
-        </span>
-        <h3 className="mt-3 mb-0.5 text-xl font-bold sm:text-2xl">{name}</h3>
-        <p className="mb-4 text-[clamp(13px,3.4vw,15px)] leading-tight text-(--mute) xl:text-base">{description}</p>
-        <div className="mt-auto flex flex-wrap items-center gap-x-1.5 gap-y-1">
+      <div className="card__body">
+        <span className={`card__type card__type--${color}`}>{type}</span>
+        <h3 className="card__title">{name}</h3>
+        <p className="card__description">{description}</p>
+        <div className="card__tech">
           {technologies.map((technology, i) => (
             <Fragment key={technology}>
               {i > 0 && (
-                <span aria-hidden="true" className="text-[12px] text-(--amber)">•</span>
+                <span aria-hidden="true" className="card__tech-sep">•</span>
               )}
-              <span className="font-mono text-[12px] text-(--amber)">{technology}</span>
+              <span className="card__tech-item">{technology}</span>
             </Fragment>
           ))}
         </div>
       </div>
 
       {/* Footer */}
-      <div className="flex flex-row flex-wrap items-center justify-between gap-x-4 border-t border-(--line) px-4 py-1.5">
-        <a
-          href={docUrl}
-          download
-          className="cursor-pointer flex flex-row items-center gap-1.5 py-1.5 text-(--mute) transition-colors hover:text-(--cyan)"
-        >
-          <span className="font-mono text-[12px]">Documentation</span>
+      <div className="card__footer">
+        <a href={docUrl} download className="card__link">
+          <span className="card__link-text">Documentation</span>
           <IoMdDownload />
         </a>
-        <a
-          href={repo}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="cursor-pointer flex flex-row items-center gap-1.5 py-1.5 text-(--mute) transition-colors hover:text-(--cyan)"
-        >
-          <span className="font-mono text-[12px]">GitHub</span>
+        <a href={repo} target="_blank" rel="noopener noreferrer" className="card__link">
+          <span className="card__link-text">GitHub</span>
           <LuFolderGit2 />
         </a>
       </div>

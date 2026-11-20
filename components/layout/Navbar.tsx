@@ -8,6 +8,7 @@ import { FaBars, FaXmark } from "react-icons/fa6";
 import Searchbar from "../ui/Searchbar";
 import ThemeButton from "../ui/ThemeButton";
 import MobileMenu from "../ui/MobileMenu";
+import "./Navbar.component.css";
 
 const ids = navLinks.map((l) => l.href.slice(1));
 
@@ -44,29 +45,25 @@ export default function Navbar() {
   }, [menuOpen]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-10">
-      <nav className="flex h-14 w-full items-center bg-(--bg) border-b border-(--line) px-5">
-        <div className="hidden md:flex basis-1/3 shrink-0 flex-row items-center gap-2.5">
+    <header className="navbar">
+      <nav className="navbar__bar">
+        <div className="navbar__status">
           <span className="dot" />
-          <p className="text-sm md:max-xl:text-xs text-(--mint) font-bold font-mono whitespace-nowrap">Active job seeker</p>
+          <p className="navbar__status-text">Active job seeker</p>
         </div>
 
-        <ul className="hidden lg:flex basis-1/3 shrink-0 flex-row justify-center gap-0.5">
+        <ul className="navbar__links">
           {navLinks.map(({ label, href }) => {
             const isActive = active === href.slice(1);
 
             return (
-              <li key={href}>
+              <li key={href} className="navbar__item">
                 <Link
                   href={href}
                   aria-current={isActive ? "page" : undefined}
-                  className={`flex items-center gap-3 border px-3.5 max-xl:px-2.5 py-1.5 text-sm max-xl:text-xs font-mono transition-colors duration-200 ${
-                    isActive
-                      ? "border-(--line) bg-(--panel) border-b-2 border-b-(--cyan) text-(--cyan) rounded-md shadow-sm"
-                      : "border-transparent text-(--mute) hover:text-(--text)"
-                  }`}
+                  className={`navbar__link${isActive ? " navbar__link--active" : ""}`}
                 >
-                  <span className={isActive ? "text-(--cyan)" : ""}>{label}</span>
+                  <span>{label}</span>
                 </Link>
               </li>
             );
@@ -74,7 +71,7 @@ export default function Navbar() {
         </ul>
 
         {/* Action buttons */}
-        <div className="ml-auto lg:ml-0 flex flex-row lg:basis-1/3 shrink-0 justify-end items-center gap-2">
+        <div className="navbar__actions">
           <Searchbar />
 
           {/* Hamburger – mobil + tablet */}
@@ -84,7 +81,7 @@ export default function Navbar() {
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
-            className="flex lg:hidden size-9 items-center justify-center rounded-lg border border-(--line) bg-(--panel) text-(--text) transition-colors hover:border-(--cyan) hover:text-(--cyan)"
+            className="navbar__hamburger"
           >
             {menuOpen ? <FaXmark size={16} /> : <FaBars size={16} />}
           </button>
@@ -93,9 +90,9 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {menuOpen &&
+      {menuOpen && (
         <MobileMenu navLinks={navLinks} active={active} setMenuOpen={setMenuOpen} />
-      }
+      )}
     </header>
   );
 }

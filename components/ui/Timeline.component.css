@@ -1,0 +1,15 @@
+.timeline__item {
+  position: relative;
+  list-style: none;
+}
+
+.timeline__dot {
+  position: absolute;
+  top: 0.3125rem;
+  left: -1.75rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--cyan);
+  box-shadow: 0 0 0 3px var(--panel);
+}

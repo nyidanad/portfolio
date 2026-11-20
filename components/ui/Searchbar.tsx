@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { navLinks, quickActions } from "@/config/nav";
 import { IconType } from "react-icons";
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import "./Searchbar.component.css";
 
 interface Item {
   label: string;
@@ -98,19 +99,17 @@ export default function QuickSearch() {
         onClick={openPalette}
         aria-haspopup="dialog"
         aria-expanded={open}
-        className="flex items-center gap-2.5 md:max-xl:gap-1.5 rounded-lg border border-(--line) bg-(--panel) px-3 md:max-xl:px-2 py-1.5 min-w-9 min-h-9 text-sm text-(--text) transition-colors hover:border-(--cyan) hover:text-(--cyan)"
+        className="quick-search__trigger"
       >
         <FaMagnifyingGlass size={14} />
-        <span className="hidden md:inline font-mono md:max-xl:text-xs">Quick search</span>
-        <kbd className="hidden lg:inline rounded border border-(--line) px-1.5 text-[11px] md:max-xl:text-[10px] text-(--mute)">
-          {modKey} K
-        </kbd>
+        <span className="quick-search__trigger-label">Quick search</span>
+        <kbd className="quick-search__kbd">{modKey} K</kbd>
       </button>
 
       {open &&
         createPortal(
           <div
-            className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 px-4 pt-[14vh] backdrop-blur-sm"
+            className="quick-search__overlay"
             onMouseDown={(e) => {
               if (e.target === e.currentTarget) close();
             }}
@@ -119,7 +118,7 @@ export default function QuickSearch() {
               role="dialog"
               aria-modal="true"
               aria-label="Quick search"
-              className="w-full max-w-lg overflow-hidden rounded-xl border border-(--line) bg-(--bg) shadow-2xl"
+              className="quick-search__dialog"
             >
               <input
                 ref={inputRef}
@@ -131,27 +130,30 @@ export default function QuickSearch() {
                 onKeyDown={onInputKey}
                 placeholder="Jump to a page or run an action…"
                 aria-label="Quick search"
-                className="w-full border-b border-(--line) bg-transparent px-5 py-4 text-base text-(--text) outline-none placeholder:text-(--mute)"
+                className="quick-search__input"
               />
-              <ul role="listbox" className="max-h-[50vh] overflow-auto p-2">
+              <ul role="listbox" className="quick-search__list">
                 {results.length === 0 ? (
-                  <li className="px-3 py-3 text-sm text-(--mute)">No results</li>
+                  <li className="quick-search__empty">No results</li>
                 ) : (
                   results.map((item, i) => {
                     const Icon = item.icon;
                     return (
-                      <li key={item.href} role="option" aria-selected={i === selected}>
+                      <li
+                        key={item.href}
+                        role="option"
+                        aria-selected={i === selected}
+                        className="quick-search__option"
+                      >
                         <button
                           type="button"
                           onMouseEnter={() => setSelected(i)}
                           onClick={() => run(item)}
-                          className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm ${
-                            i === selected ? "bg-(--panel) text-(--text)" : "text-(--mute)"
-                          }`}
+                          className={`quick-search__item${i === selected ? " quick-search__item--selected" : ""}`}
                         >
-                          <Icon className="size-4.5 shrink-0" strokeWidth={1.8} aria-hidden="true" />
+                          <Icon className="quick-search__icon" strokeWidth={1.8} aria-hidden="true" />
                           {item.label}
-                          <span className="ml-auto text-[11px] text-(--mute)">{item.hint}</span>
+                          <span className="quick-search__hint">{item.hint}</span>
                         </button>
                       </li>
                     );

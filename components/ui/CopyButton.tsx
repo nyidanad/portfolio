@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import "./CopyButton.component.css";
 
 type CopyButtonProps = {
   text: string;
@@ -8,7 +9,7 @@ type CopyButtonProps = {
   className?: string;
 }
 
-export default function CopyButton({text, label, className}: CopyButtonProps) {
+export default function CopyButton({ text, label, className }: CopyButtonProps) {
   const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
 
   const copy = async () => {
@@ -22,7 +23,7 @@ export default function CopyButton({text, label, className}: CopyButtonProps) {
   };
 
   return (
-    <button type="button" onClick={copy} className={`max-w-full break-all ${className ?? ""}`}>
+    <button type="button" onClick={copy} className={`copy-button ${className ?? ""}`}>
       {state === "copied" ? "Copied" : state === "failed" ? text : label}
     </button>
   );

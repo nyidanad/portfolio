@@ -1,0 +1,108 @@
+.projects {
+  min-height: 100vh;
+  padding-block: 4rem;
+}
+
+.projects__container {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.projects__title {
+  margin: 0;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+}
+
+.projects__title-accent {
+  color: var(--cyan);
+}
+
+/* ---------- Szűrők ---------- */
+.projects__filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.projects__filter {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  background-color: var(--panel);
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+  font-size: clamp(11px, 2.8vw, 13px);
+  color: inherit;
+  cursor: pointer;
+  transition: color 150ms, background-color 150ms, border-color 150ms;
+}
+
+.projects__filter:hover {
+  border-color: var(--cyan);
+}
+
+.projects__filter[aria-pressed="true"] {
+  border-color: var(--cyan);
+  background-color: var(--cyan);
+  color: var(--bg);
+}
+
+.projects__counter {
+  flex-basis: 100%;
+  margin: 0.5rem 0;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+  font-size: clamp(12px, 2.8vw, 13px);
+  color: var(--mute);
+}
+
+.projects__empty {
+  margin: 0;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+  font-size: 0.875rem;
+  color: var(--mute);
+}
+
+/* ---------- Kártyák ---------- */
+.projects__grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* ---------- Reszponzív ---------- */
+@media (min-width: 640px) {
+  .projects__container { padding-inline: 2rem; }
+  .projects__title { font-size: 3rem; line-height: 1; }
+  .projects__filters { gap: 0.75rem; margin-top: 2.5rem; }
+  .projects__filter { padding-block: 0.25rem; }
+  .projects__counter {
+    flex-basis: auto;
+    margin: 0 0 0 auto;
+  }
+  .projects__empty { font-size: 1rem; }
+}
+
+@media (min-width: 768px) {
+  .projects__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    align-items: stretch;
+    gap: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .projects { padding-block: 6rem; }
+  .projects__title { font-size: 4.5rem; }
+  .projects__filter { padding-inline: 1rem; font-size: 0.875rem; }
+  .projects__counter { font-size: 0.875rem; }
+}
+
+@media (min-width: 1280px) {
+  .projects__container { padding-inline: 0; }
+}
